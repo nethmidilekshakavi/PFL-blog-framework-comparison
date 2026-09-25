@@ -1,3 +1,14 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "title": "abc",
+      "content": "dsdsd",
+      "tags": [
+        "jabhdb"
+      ],
+      "createdAt": "2026-09-25T16:16:16.380Z",
+      "id": "jmAInkPD5Qg"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
