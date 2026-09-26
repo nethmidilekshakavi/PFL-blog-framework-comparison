@@ -1,21 +1,24 @@
 <script>
     import { goto } from '$app/navigation';
 
+    // Reactive state for the form fields and submission status
     let title = $state('');
     let content = $state('');
     let tagsInput = $state('');
     let submitting = $state(false);
     let error = $state(null);
 
+    // Validate and submit the new post to the backend
     async function handleSubmit() {
         if (!title.trim() || !content.trim()) {
-            error = 'Title සහ Content දෙකම ලියන්න ඕන';
+            error = 'Title and Content cannot be empty';
             return;
         }
 
         submitting = true;
         error = null;
 
+        // Convert the comma-separated tags string into a clean array
         const tags = tagsInput
             .split(',')
             .map(t => t.trim())
@@ -33,11 +36,12 @@
                 })
             });
 
-            if (!res.ok) throw new Error('Post add කරන්න බැරි උනා');
+            if (!res.ok) throw new Error('Failed to add the post');
 
+            // Redirect back to the homepage after a successful post
             goto('/');
         } catch (err) {
-            error = 'Post add කරන්න බැරි උනා. Backend run වෙනවද check කරන්න.';
+            error = 'Failed to add the post. Check if the backend is running.';
         } finally {
             submitting = false;
         }
@@ -81,12 +85,15 @@
         padding: 2rem;
         font-family: sans-serif;
     }
+
+    /* Simple back-to-home link */
     .back-link {
         display: inline-block;
         margin-bottom: 1rem;
         color: #ff3e00;
         text-decoration: none;
     }
+
     form {
         display: flex;
         flex-direction: column;
@@ -105,6 +112,8 @@
         border: 1px solid #ccc;
         border-radius: 6px;
     }
+
+    /* Submit button, dimmed while submitting */
     button {
         background: #ff3e00;
         color: white;

@@ -1,13 +1,15 @@
 {
   "posts": [
     {
-      "title": "abc",
-      "content": "dsdsd",
+      "title": "Introduction to React",
+      "content": "React is a popular JavaScript library for building user interfaces. In this post, we will learn the basics of React components and how to create a simple React application.\n\n",
       "tags": [
-        "jabhdb"
+        "react",
+        "javascript",
+        "tutorial"
       ],
-      "createdAt": "2026-09-25T16:16:16.380Z",
-      "id": "jmAInkPD5Qg"
+      "createdAt": "2026-09-26T05:22:51.449Z",
+      "id": "M72Lbx4_37Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
