@@ -79,55 +79,75 @@
 </main>
 
 <style>
+    :global(body) {
+        background: #f4f6fb;
+        margin: 0;
+    }
     main {
         max-width: 600px;
         margin: 0 auto;
-        padding: 2rem;
-        font-family: sans-serif;
+        padding: 2.5rem 1.5rem;
+        font-family: 'Segoe UI', sans-serif;
     }
-
-    /* Simple back-to-home link */
     .back-link {
         display: inline-block;
         margin-bottom: 1rem;
-        color: #ff3e00;
+        color: #667eea;
         text-decoration: none;
+        font-weight: 500;
     }
-
+    h1 {
+        color: #1a1a2e;
+        margin-bottom: 1.5rem;
+    }
     form {
+        background: white;
+        border-radius: 16px;
+        padding: 1.8rem;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.1rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     }
     label {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
-        font-weight: bold;
+        gap: 0.4rem;
+        font-weight: 600;
+        color: #333;
+        font-size: 0.9rem;
     }
     input, textarea {
         font-family: inherit;
         font-size: 1rem;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 6px;
+        padding: 0.6rem 0.8rem;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 8px;
+        transition: border-color 0.15s ease;
     }
-
-    /* Submit button, dimmed while submitting */
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #667eea;
+    }
     button {
-        background: #ff3e00;
+        background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
         border: none;
-        padding: 0.7rem;
-        border-radius: 6px;
+        padding: 0.8rem;
+        border-radius: 8px;
         font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
+        box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
     }
     button:disabled {
         opacity: 0.6;
         cursor: not-allowed;
     }
     .error {
-        color: red;
+        color: #d9480f;
+        background: #fdeeee;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
     }
 </style>

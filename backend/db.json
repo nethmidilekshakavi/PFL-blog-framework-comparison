@@ -10,6 +10,54 @@
       ],
       "createdAt": "2026-09-26T05:22:51.449Z",
       "id": "M72Lbx4_37Y"
+    },
+    {
+      "title": "Web Development Basics",
+      "content": "Web development is the process of creating websites and web applications. It includes frontend development, backend development, databases, and APIs. Learning HTML, CSS, and JavaScript is a great starting point for beginners who want to become web developers.\n",
+      "tags": [
+        "web development",
+        "html",
+        "css",
+        "javascript"
+      ],
+      "createdAt": "2026-09-26T05:40:58.951Z",
+      "id": "3bTmntlPdag"
+    },
+    {
+      "title": "Getting Started with SvelteKit",
+      "content": "SvelteKit is a modern framework for building fast and interactive web applications. It provides features such as routing, server-side rendering, API endpoints, and easy project structure. SvelteKit is a great choice for developers who want to build modern websites with a simple and efficient development experience.\n",
+      "tags": [
+        "sveltekit",
+        "svelte",
+        "web development",
+        "javascript"
+      ],
+      "createdAt": "2026-09-26T05:53:51.461Z",
+      "id": "kNWfUsLkJzU"
+    },
+    {
+      "title": "Introduction to Backend Development",
+      "content": "Backend development focuses on the server-side part of a web application. It handles business logic, databases, authentication, APIs, and communication between the frontend and server. A well-designed backend helps applications remain secure, reliable, and easy to maintain.\n",
+      "tags": [
+        "backend",
+        "api",
+        "database",
+        "web development"
+      ],
+      "createdAt": "2026-09-26T05:54:16.092Z",
+      "id": "jc6lJdemvXo"
+    },
+    {
+      "title": "Introduction to Backend Development",
+      "content": "Backend development focuses on the server-side part of a web application. It handles business logic, databases, authentication, APIs, and communication between the frontend and server. A well-designed backend helps applications remain secure, reliable, and easy to maintain.\n",
+      "tags": [
+        "backend",
+        "api",
+        "database",
+        "web development"
+      ],
+      "createdAt": "2026-09-26T05:54:48.571Z",
+      "id": "3HNrTS9mWZM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
