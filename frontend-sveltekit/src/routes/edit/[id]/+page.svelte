@@ -27,17 +27,23 @@
 	}
 </script>
 
-<div class="section-head">
-	<h2>Edit post</h2>
-</div>
-
-{#if loading}
-	<div class="state"><div class="spinner"></div>Loading…</div>
-{:else if loadError}
-	<div class="state error">
-		<p>⚠ {loadError}</p>
-		<a href="/" class="btn btn-ghost" style="margin-top: 14px">← Back home</a>
+<header class="hero">
+	<div class="hero-inner">
+		<a href="/" class="back-link">&larr; Back to journey</a>
+		<h1>Edit update</h1>
+		<p class="hero-sub">Fix a detail, add what you learned, or tidy up the tags.</p>
 	</div>
-{:else}
-	<PostForm initial={post} onSubmit={handleUpdate} submitLabel="Save changes" />
-{/if}
+</header>
+
+<main class="wrap narrow">
+	{#if loading}
+		<div class="state"><div class="spinner"></div>Loading your post…</div>
+	{:else if loadError}
+		<div class="state error" role="alert">
+			<p>{loadError}</p>
+			<a href="/" class="btn ghost">Back to journey</a>
+		</div>
+	{:else}
+		<PostForm initial={post} onSubmit={handleUpdate} submitLabel="Save changes" />
+	{/if}
+</main>

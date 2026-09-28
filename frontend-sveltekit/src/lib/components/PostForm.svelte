@@ -42,41 +42,50 @@
 	}
 </script>
 
-<form class="form" onsubmit={handleSubmit} novalidate>
+<form class="card form" onsubmit={handleSubmit} novalidate>
+	{#if submitError}<p class="error-box" role="alert">{submitError}</p>{/if}
+
 	<div class="field">
 		<label for="title">Title</label>
 		<input
 			id="title"
 			class="input"
 			bind:value={title}
-			placeholder="e.g. Building my FYP with SvelteKit"
+			placeholder="e.g. Connected the frontend to the API"
 		/>
 		{#if errors.title}<p class="error-text">{errors.title}</p>{/if}
 	</div>
 
 	<div class="field">
-		<label for="content">Content</label>
+		<label for="content">What happened?</label>
 		<textarea
 			id="content"
 			class="textarea"
+			rows="7"
 			bind:value={content}
-			placeholder="Tell us about your project…"
+			placeholder="Describe your progress, problems, or lessons..."
 		></textarea>
 		{#if errors.content}<p class="error-text">{errors.content}</p>{/if}
 	</div>
 
 	<div class="field">
 		<label for="tags">Tags</label>
-		<input id="tags" class="input" bind:value={tagsInput} placeholder="svelte, api, testing" />
-		<p class="hint">Separate tags with commas.</p>
+		<input
+			id="tags"
+			class="input"
+			bind:value={tagsInput}
+			placeholder="e.g. svelte, backend, testing"
+		/>
+		<p class="hint">Separate tags with commas</p>
 		<div style="margin-top: 10px">
 			<TagList tags={parseTags(tagsInput)} />
 		</div>
 	</div>
 
-	{#if submitError}<p class="error-text">⚠ {submitError}</p>{/if}
-
-	<button class="btn btn-primary" type="submit" disabled={saving}>
-		{saving ? 'Saving…' : submitLabel}
-	</button>
+	<div class="form-actions">
+		<a href="/" class="btn ghost">Cancel</a>
+		<button class="btn primary" type="submit" disabled={saving}>
+			{saving ? 'Saving…' : submitLabel}
+		</button>
+	</div>
 </form>

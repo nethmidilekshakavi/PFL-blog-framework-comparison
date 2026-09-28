@@ -40,49 +40,54 @@
 	}
 </script>
 
-{#if loading}
-	<div class="state"><div class="spinner"></div>Loading posts…</div>
-{:else if error}
-	<div class="state error">
-		<p>⚠ {error}</p>
-		<button type="button" class="btn btn-ghost" style="margin-top: 14px" onclick={load}>
-			Retry
-		</button>
+<header class="hero">
+	<div class="hero-inner">
+		<a href="/" class="back-link">&larr; Back to journey</a>
+		<h1>All updates</h1>
+		<p class="hero-sub">Search by title or content, or filter by a tag.</p>
 	</div>
-{:else}
-	<div class="section-head">
-		<h2>All posts ({results.length})</h2>
-	</div>
+</header>
 
-	<div class="toolbar">
-		<input
-			class="input"
-			placeholder="🔍 Search title or content…"
-			value={query}
-			oninput={(e) => update('q', e.currentTarget.value)}
-		/>
-		{#if tag}
-			<button type="button" class="btn btn-ghost" onclick={() => update('tag', '')}>
-				Clear tag #{tag} ✕
-			</button>
-		{/if}
-	</div>
-
-	<div style="margin-bottom: 26px">
-		<TagList
-			tags={allTags}
-			activeTag={tag}
-			onTagClick={(t) => update('tag', t === tag ? '' : t)}
-		/>
-	</div>
-
-	{#if results.length === 0}
-		<div class="state">No posts match your search.</div>
-	{:else}
-		<div class="grid">
-			{#each results as post (post.id)}
-				<PostCard {post} />
-			{/each}
+<main class="wrap">
+	{#if loading}
+		<div class="state"><div class="spinner"></div>Loading posts…</div>
+	{:else if error}
+		<div class="state error" role="alert">
+			<p>{error}</p>
+			<button type="button" class="btn ghost" onclick={load}>Retry</button>
 		</div>
+	{:else}
+		<section class="panel">
+			<div class="toolbar">
+				<input
+					class="input"
+					placeholder="Search title or content…"
+					value={query}
+					oninput={(e) => update('q', e.currentTarget.value)}
+				/>
+				{#if tag}
+					<button type="button" class="btn ghost" onclick={() => update('tag', '')}>
+						Clear tag #{tag} ✕
+					</button>
+				{/if}
+			</div>
+			<TagList
+				tags={allTags}
+				activeTag={tag}
+				onTagClick={(t) => update('tag', t === tag ? '' : t)}
+			/>
+		</section>
+
+		<h2 class="list-head">All posts ({results.length})</h2>
+
+		{#if results.length === 0}
+			<div class="state">No posts match your search.</div>
+		{:else}
+			<div class="stack">
+				{#each results as post (post.id)}
+					<PostCard {post} />
+				{/each}
+			</div>
+		{/if}
 	{/if}
-{/if}
+</main>

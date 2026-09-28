@@ -13,19 +13,21 @@
 	<title>DevLog</title>
 </svelte:head>
 
-<header class="navbar">
-	<div class="container">
-		<a href="/" class="logo">Dev<span>Log</span></a>
-		<nav class="nav-links">
-			<a href="/" class:active={path === '/'}>Home</a>
-			<a href="/posts" class:active={path === '/posts'}>All Posts</a>
-			<a href="/new-post" class="btn btn-primary">+ New Post</a>
-		</nav>
+<div class="shell">
+	<header class="navbar">
+		<div class="navbar-inner">
+			<a href="/" class="logo">Dev<span>Log</span></a>
+			<nav class="nav-links">
+				<a href="/" class:active={path === '/'}>Home</a>
+				<a href="/posts" class:active={path === '/posts'}>All Posts</a>
+				<a href="/new-post" class="nav-cta">+ New Post</a>
+			</nav>
+		</div>
+	</header>
+
+	<div class="content">
+		{@render children()}
 	</div>
-</header>
 
-<main class="container page">
-	{@render children()}
-</main>
-
-<footer class="footer">© 2026 DevLog · Built with SvelteKit + Express/SQLite</footer>
+	<footer class="footer">© 2026 DevLog · Built with SvelteKit + Express/SQLite</footer>
+</div>

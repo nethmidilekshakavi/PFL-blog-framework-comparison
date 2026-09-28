@@ -9,8 +9,16 @@
 	}
 </script>
 
-<div class="section-head">
-	<h2>Write a new post</h2>
-</div>
+<header class="hero">
+	<div class="hero-inner">
+		<a href="/" class="back-link">&larr; Back to journey</a>
+		<h1>Share an update</h1>
+		<p class="hero-sub">
+			What did you build, fix, or learn this time? Add it to your timeline.
+		</p>
+	</div>
+</header>
 
-<PostForm onSubmit={handleCreate} submitLabel="Publish" />
+<main class="wrap narrow">
+	<PostForm onSubmit={handleCreate} submitLabel="Publish update" />
+</main>
