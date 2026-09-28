@@ -1,27 +1,29 @@
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
+import axios from "axios";
 
-async function request(path, options = {}) {
-    const res = await fetch(`${BASE}${path}`, {
-        headers: { "Content-Type": "application/json" },
-        ...options,
-    });
-    if (!res.ok) throw new Error(`Request failed (${res.status})`);
-    return res.status === 204 ? null : res.json();
-}
+const http = axios.create({
+    baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:3001",
+    headers: { "Content-Type": "application/json" },
+    timeout: 10000,
+});
 
-export const getPosts = () => request("/posts");
-export const getPost = (id) => request(`/posts/${id}`);
+// Backend eke error message eka `e.message` widiyata pennanna (existing code wenas karanna one naha)
+http.interceptors.response.use(
+    (res) => res,
+    (err) => {
+        const data = err.response?.data;
+        let message = data?.error ?? (err.response ? `Request failed (${err.response.status})` : "Cannot reach the server");
+        if (data?.details) message += `: ${Object.values(data.details).join(", ")}`;
+        return Promise.reject(Object.assign(new Error(message), { status: err.response?.status }));
+    }
+);
+
+export const getPosts = () => http.get("/posts").then((r) => r.data);
+export const getPost = (id) => http.get(`/posts/${id}`).then((r) => r.data);
 
 export const createPost = ({ title, content, tags }) =>
-    request("/posts", {
-        method: "POST",
-        body: JSON.stringify({ title, content, tags, createdAt: new Date().toISOString() }),
-    });
+    http.post("/posts", { title, content, tags, createdAt: new Date().toISOString() }).then((r) => r.data);
 
 export const updatePost = (id, { title, content, tags }) =>
-    request(`/posts/${id}`, {
-        method: "PATCH",
-        body: JSON.stringify({ title, content, tags }),
-    });
+    http.patch(`/posts/${id}`, { title, content, tags }).then((r) => r.data);
 
-export const deletePost = (id) => request(`/posts/${id}`, { method: "DELETE" });
+export const deletePost = (id) => http.delete(`/posts/${id}`).then((r) => r.data);

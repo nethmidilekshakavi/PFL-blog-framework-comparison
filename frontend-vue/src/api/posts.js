@@ -1,30 +1,29 @@
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
+import axios from "axios";
 
-async function request(path, options = {}) {
-    const res = await fetch(`${BASE}${path}`, {
-        headers: { "Content-Type": "application/json" },
-        ...options,
-    });
-    if (!res.ok) {
-        throw new Error(
-            res.status === 404 ? "Post not found" : `Request failed (${res.status})`
-        );
+const http = axios.create({
+    baseURL: import.meta.env.VITE_API_URL ?? "http://localhost:3001",
+    headers: { "Content-Type": "application/json" },
+    timeout: 10000,
+});
+
+http.interceptors.response.use(
+    (res) => res,
+    (err) => {
+        const data = err.response?.data;
+        let message = data?.error ?? (err.response ? `Request failed (${err.response.status})` : "Cannot reach the server");
+        if (data?.details) message += `: ${Object.values(data.details).join(", ")}`;
+        return Promise.reject(Object.assign(new Error(message), { status: err.response?.status }));
     }
-    return res.json();
-}
+);
 
 export const api = {
     list: async () => {
-        const posts = await request("/posts");
-        return posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const { data } = await http.get("/posts");
+        return data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     },
-    get: (id) => request(`/posts/${id}`),
+    get: (id) => http.get(`/posts/${id}`).then((r) => r.data),
     create: (data) =>
-        request("/posts", {
-            method: "POST",
-            body: JSON.stringify({ ...data, createdAt: new Date().toISOString() }),
-        }),
-    update: (id, data) =>
-        request(`/posts/${id}`, { method: "PATCH", body: JSON.stringify(data) }),
-    remove: (id) => request(`/posts/${id}`, { method: "DELETE" }),
+        http.post("/posts", { ...data, createdAt: new Date().toISOString() }).then((r) => r.data),
+    update: (id, data) => http.patch(`/posts/${id}`, data).then((r) => r.data),
+    remove: (id) => http.delete(`/posts/${id}`).then((r) => r.data),
 };
