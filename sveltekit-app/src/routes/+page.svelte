@@ -73,7 +73,7 @@
         and what you learned along the way.
       </p>
       <div class="hero-actions">
-        <a href="/new-post" class="cta">Share an update</a>
+        <a href="/new-post" class="cta">New Post</a>
         {#if !loading && !error}
           <span class="count">{posts.length} recent {posts.length === 1 ? 'update' : 'updates'}</span>
         {/if}

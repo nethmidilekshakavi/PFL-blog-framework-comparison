@@ -87,7 +87,7 @@
             <div class="form-actions">
                 <a href="/" class="btn ghost">Cancel</a>
                 <button type="submit" class="btn primary" disabled={submitting}>
-                    {submitting ? 'Publishing…' : 'Publish update'}
+                    {submitting ? 'Publishing…' : 'Publish'}
                 </button>
             </div>
         </form>
