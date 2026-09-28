@@ -1,16 +1,65 @@
-# React + Vite
+# DevLog: Final Year Project Blog (React + json-server)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A blog for Software Engineering students to share posts about their final year projects.
+Built with **React (Vite)** for the frontend and **json-server** as a simulated REST API backend.
 
-Currently, two official plugins are available:
+## Features
+- Homepage showing the latest 3 posts
+- Create, view, edit and delete posts
+- Tagging, tag filtering and search (extra feature)
+- Unit tests with Vitest
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requirements
+- Node.js 22.12 or newer
+- npm
 
-## React Compiler
+## Project Structure
+```
+blog-react-express/
+├── backend/     json-server API (db.json)
+└── frontend/    React app
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to Run
 
-## Expanding the ESLint configuration
+### 1. Start the backend (Terminal 1)
+```bash
+cd backend
+npm install
+npm start
+```
+API runs at http://localhost:3001
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Start the frontend (Terminal 2)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+App runs at http://localhost:5173
+
+> Create `frontend/.env` with: `VITE_API_URL=http://localhost:3001`
+
+## Run Tests
+```bash
+cd frontend
+npm test
+npm run test:coverage
+```
+
+## API Endpoints
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /posts | Get all posts |
+| GET | /posts/:id | Get one post |
+| POST | /posts | Create a post |
+| PATCH | /posts/:id | Update a post |
+| DELETE | /posts/:id | Delete a post |
+
+## Tech Stack
+React, Vite, React Router, json-server, Vitest
+
+## Authors
+- Name 1
+- Name 2
+- Name 3
