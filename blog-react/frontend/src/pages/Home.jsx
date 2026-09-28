@@ -4,7 +4,7 @@ import PostCard from "../components/PostCard";
 import TagList from "../components/TagList";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import { getAllTags, getLatest } from "../utils/posts";
+import { getAllTags, getLatest } from "../util/posts.js";
 
 export default function Home() {
     const { posts, loading, error, reload } = usePosts();

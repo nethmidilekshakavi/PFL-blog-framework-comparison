@@ -4,7 +4,7 @@ import { deletePost, getPost } from "../api/posts";
 import TagList from "../components/TagList";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
-import { formatDate, readingTime } from "../utils/posts";
+import { formatDate, readingTime } from "../util/posts.js";
 
 export default function PostDetail() {
     const { id } = useParams();

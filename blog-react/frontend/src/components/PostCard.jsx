@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import TagList from "./TagList";
-import { excerpt, formatDate, readingTime } from "../utils/posts";
+import { excerpt, formatDate, readingTime } from "../util/posts.js";
 
 export default function PostCard({ post }) {
     return (
