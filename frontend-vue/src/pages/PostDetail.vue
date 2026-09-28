@@ -123,7 +123,7 @@ const dropCap =
           <Trash2 class="h-6 w-6" />
         </span>
         <h3 class="mt-4 text-lg font-bold text-slate-900 dark:text-white">Delete this post?</h3>
-        <p class="mt-1 text-sm text-slate-500">Meka permanently delete wenawa. Undo karanna baha.</p>
+        <p class="mt-1 text-sm text-slate-500">Are you sure ?? this will be delete permanently.</p>
         <div class="mt-6 flex justify-end gap-3">
           <button
               class="rounded-xl px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
